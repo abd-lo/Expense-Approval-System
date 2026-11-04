@@ -5,7 +5,7 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 # Database connection URL: postgresql://<user>:<password>@<host>:<port>/<db_name>
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
-    "postgresql://postgres:12345678@localhost:5432/expense_tracker"
+    "postgresql+psycopg2://postgres:12345678@localhost:5432/expense_tracker",
 )
 
 # Create the database engine
