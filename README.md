@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # Expense-Approval-System
 
 ## Initial Overview & Architecture
@@ -25,3 +26,5 @@ Expenses progress through four explicit states:
 - **Backend:** FastAPI (Python REST API handling authentication, role-based access control, and state machine transitions)
 - **Database:** PostgreSQL (Relational persistence with foreign keys and relational constraints)
 - **Containerization:** Docker Compose (Single-command deployment for DB, API, and Web UI)
+=======
+>>>>>>> Stashed changes
