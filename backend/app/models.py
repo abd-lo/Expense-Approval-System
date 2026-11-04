@@ -1,12 +1,13 @@
 import enum
 from datetime import datetime
-from sqlalchemy import Column, Integer, String, Numeric, Text, DateTime, ForeignKey, Enum
+from sqlalchemy import Column, Integer, String, Numeric, Text, DateTime, ForeignKey, Enum,Boolean
 from sqlalchemy.orm import relationship
 from .database import Base
 
 class UserRole(str, enum.Enum):
     EMPLOYEE = "EMPLOYEE"
     MANAGER = "MANAGER"
+    ADMIN = "ADMIN"
 
 class ExpenseStatus(str, enum.Enum):
     DRAFT = "DRAFT"
@@ -23,6 +24,8 @@ class User(Base):
     full_name = Column(String(100), nullable=False)
     role = Column(Enum(UserRole), nullable=False, default=UserRole.EMPLOYEE)
     created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    is_active = Column(Boolean, default=True, nullable=False)
 
     expenses = relationship("Expense", back_populates="submitter")
     audit_logs = relationship("AuditLog", back_populates="actor")
